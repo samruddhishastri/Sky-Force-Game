@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THREE JS Game</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        h3,h1{
+            display:inline;
+            color: whitesmoke;
+        }
+        span:before{
+            content:" "; 
+            display:inline-block; 
+            width:32px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <center>
+            <h1>SKY FORCE</h1>
+            <p><span><h3>Health: <span id="health"></span></h3><span>
+            <span><h3>Score: <span id="score"></span></h3></span></p>
+        </center>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+        <script src="https://rawcdn.githack.com/mrdoob/three.js/r102/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="main.js"></script>
+    </div>
+</body>
+</html>

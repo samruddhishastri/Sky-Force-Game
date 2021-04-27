@@ -233,32 +233,44 @@ async function animate(){
     }
 
     if(num_enemys==0){
-        you_won();
-        return;
+        you_won()
+        return
     }
-    else if(health==0){
-        you_lost();
-        return;
+    else if(health==0){ 
+        you_lost()
+        return
     }
 
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    console.log(health+" "+score)
+    // console.log(health+" "+score)
     document.getElementById("health").innerHTML = health;
     document.getElementById("score").innerHTML = score;
 }
 
 function you_won(){
-    console.log("YOU WON");
+    while(scene.children.length > 0){ 
+        scene.remove(scene.children[0]); 
+    }
+    renderer.render(scene, camera);
+    document.getElementById("health").innerHTML = health;
+    document.getElementById("score").innerHTML = score;
+    document.getElementById("blank").innerHTML = "You WOn";
 }
 
 function you_lost(){
-    console.log("YOU LOST");
+    while(scene.children.length > 0){ 
+        scene.remove(scene.children[0]); 
+    }
+    renderer.render(scene, camera);
+    document.getElementById("health").innerHTML = health;
+    document.getElementById("score").innerHTML = score;
+    document.getElementById("blank").innerHTML = "You Lost";
 }
 
 function enemy_attack(t){
     let b;
-    loader.load('missile.glb', function ( gltf ) {
+    loader.load('./assets/missile.glb', function ( gltf ) {
         b = gltf.scene;
         if(t%300 == 0)
             b.position.set(enemy.position.x, enemy.position.y, enemy.position.z);
@@ -278,7 +290,7 @@ function enemy_attack(t){
 
 function shoot(){
     let b;
-    loader.load( 'missile.glb', function ( gltf ) {
+    loader.load( './assets/missile.glb', function ( gltf ) {
         b = gltf.scene;
         b.position.set(airplane.position.x, airplane.position.y, airplane.position.z);
         b.scale.set(0.02,-0.02,0.02);
@@ -366,7 +378,7 @@ function init(){
     }
 
     let temp = new THREE.TextureLoader();
-    let sprite = temp.load('star.png');
+    let sprite = temp.load('./assets/star.png');
 
     let starMaterial = new THREE.PointsMaterial({
         color: 0xFFFFFF,
@@ -390,7 +402,7 @@ function init(){
     }
 
     let temp1 = new THREE.TextureLoader();
-    let sprite1 = temp1.load('star_yellow.png');
+    let sprite1 = temp1.load('./assets/star_yellow.png');
 
     let starMaterial1 = new THREE.PointsMaterial({
         color: 0xFFFFFF,
@@ -415,7 +427,7 @@ function init(){
     }
 
     let temp2 = new THREE.TextureLoader();
-    let sprite2 = temp2.load('red_star.png');
+    let sprite2 = temp2.load('./assets/red_star.png');
 
     let starMaterial2 = new THREE.PointsMaterial({
         color: 0xFFFFFF,
@@ -429,7 +441,7 @@ function init(){
 
     loader = new THREE.GLTFLoader();
 
-    loader.load( './jet/source/jet.glb', function ( gltf ) {
+    loader.load( './assets/jet.glb', function ( gltf ) {
         airplane = gltf.scene;
         airplane.scale.set(0.2,0.2,0.25);
         airplane.rotation.x = Math.PI/4;
@@ -438,7 +450,7 @@ function init(){
         console.error( error );
     });
 
-    loader.load('ufo2.glb', function ( gltf ) {
+    loader.load('./assets/ufo2.glb', function ( gltf ) {
         enemy = gltf.scene;
         enemy.position.set(0,0,-5);
         enemy.scale.set(0.25,0.25,0.25);
@@ -448,7 +460,7 @@ function init(){
         console.error( error );
     });
 
-    loader.load('ufo2.glb', function ( gltf ) {
+    loader.load('./assets/ufo2.glb', function ( gltf ) {
         enemy1 = gltf.scene;
         enemy1.position.set(-5,0,-5);
         enemy1.scale.set(0.25,0.25,0.25);
@@ -458,7 +470,7 @@ function init(){
         console.error( error );
     });
 
-    loader.load('ufo2.glb', function ( gltf ) {
+    loader.load('./assets/ufo2.glb', function ( gltf ) {
         enemy2 = gltf.scene;
         enemy2.position.set(0,3,-5);
         enemy2.scale.set(0.25,0.25,0.25);
@@ -468,7 +480,7 @@ function init(){
         console.error( error );
     });
 
-    loader.load('star.glb', function ( gltf ) {
+    loader.load('./assets/star.glb', function ( gltf ) {
         powerup = gltf.scene;
         powerup.position.set(0,3,-5);
         powerup.scale.set(0.25,0.25,0.25);
